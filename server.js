@@ -13,8 +13,9 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.urlencoded({ extended: true })); // Parse incoming request bodies
 app.use("/dist", express.static("dist")); // Serve static files (e.g. CSS files)
+app.use(express.json()); // Parse incoming request bodies
 
-app.use(routes);
+app.use('/todos',routes);
 
 db.initDb()
   .then(function () {
