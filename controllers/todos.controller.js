@@ -38,6 +38,7 @@ async function deleteTodo(req, res, next) {
 }
 async function updateTodo(req, res, next) {
   const todoId = req.params.id;
+  console.log(todoId);
   const newTodoText = req.body.newtext;
   const todo = new Todo(newTodoText, todoId);
 
@@ -53,5 +54,5 @@ module.exports = {
   getAllTodos: getAllTodos,
   addTodo: addTodo,
   deleteTodo: deleteTodo,
-  UpdateTodo: updateTodo,
+  updateTodo: updateTodo,
 };
