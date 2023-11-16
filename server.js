@@ -1,7 +1,7 @@
 const path = require("path");
 
 const express = require("express");
-
+const indexRoutes = require("./routes/indexRoutes");
 const routes = require("./routes/link");
 const db = require("./data/database");
 
@@ -15,7 +15,8 @@ app.use(express.urlencoded({ extended: true })); // Parse incoming request bodie
 app.use("/dist", express.static("dist")); // Serve static files (e.g. CSS files)
 app.use(express.json()); // Parse incoming request bodies
 
-app.use('/todos',routes);
+app.use(indexRoutes);
+app.use("/todos", routes);
 
 db.initDb()
   .then(function () {

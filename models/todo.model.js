@@ -7,8 +7,9 @@ class Todo {
   }
   static async getTodos() {
     const todoDocument = await db.getDb().collection("todos").find().toArray();
+    
     return todoDocument.map(function (todoDocument) {
-      return new Todo(todoDocument._id, todoDocument.text);
+      return new Todo(todoDocument.text, todoDocument._id);
     });
   }
   save() {
@@ -24,10 +25,11 @@ class Todo {
   }
   delete() {
     if (!this.id) {
+      console.log("brak takiej pozycji");
       throw new Error("Trying to delete todo without id!");
     }
     const todoId = new mongodb.ObjectId(this.id);
-    return db.getDb().collection("todo").deleteOne({ _id: todoId });
+    return db.getDb().collection("todos").deleteOne({ _id: todoId });
   }
 }
 

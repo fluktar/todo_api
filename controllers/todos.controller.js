@@ -13,6 +13,7 @@ async function getAllTodos(req, res, next) {
 async function addTodo(req, res, next) {
   const todoText = req.body.text;
   const todo = new Todo(todoText);
+
   let insertedId;
   try {
     const result = await todo.save();
@@ -34,12 +35,13 @@ async function deleteTodo(req, res, next) {
   } catch (error) {
     return next(error);
   }
+
   res.json({ message: "Todo deleted successfully!" });
 }
+
 async function updateTodo(req, res, next) {
   const todoId = req.params.id;
-  console.log(todoId);
-  const newTodoText = req.body.newtext;
+  const newTodoText = req.body.newText;
   const todo = new Todo(newTodoText, todoId);
 
   try {
