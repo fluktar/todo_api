@@ -344,7 +344,8 @@ gulp.task(
     "optimizeImages",
     "start-server",
     "watch",
-    watch
+    watch,
+    
   )
 );
 
