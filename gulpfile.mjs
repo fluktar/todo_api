@@ -291,6 +291,8 @@ gulp.task("checkPHP", checkPHP);
 // zadanie do uruchamiania serwera za pomocą nodemon
 
 gulp.task("start-server", function (done) {
+  
+
   nodemon({
     script: "server.js",
     ext: "js",
